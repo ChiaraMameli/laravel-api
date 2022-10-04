@@ -1,35 +1,21 @@
 <template>
     <div>   
         <AppHeader />
-        <ul>
-            <li v-for="post in posts" :key="post.id">{{post.title}}</li>
-        </ul>
+        <div class="container">
+            <PostsList :posts="posts"/>
+        </div>
     </div> 
 </template>
 
 <script>
     import axios from 'axios';
     import AppHeader from './AppHeader';
+    import PostsList from './posts/PostsList';
     export default{
         components: {
-            AppHeader
+            AppHeader,
+            PostsList
         },
-        data(){
-            return{
-                posts: []
-            }
-        },
-        methods: {
-            fetchPosts(){
-                axios.get('http://127.0.0.1:8000/api/posts')
-                .then(res => {
-                    this.posts = res.data;
-                })
-            }
-        },
-        mounted(){
-            this.fetchPosts();
-        }
     }
 </script>
 
