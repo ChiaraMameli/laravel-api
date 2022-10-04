@@ -1,12 +1,12 @@
 <template>
-    <Placeholder />
+    <AppHeader />
 </template>
 
 <script>
-    import Placeholder from './Placeholder';
+    import AppHeader from './AppHeader';
     export default{
         components: {
-            Placeholder
+            AppHeader
         }
     }
 </script>
