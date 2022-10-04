@@ -1908,11 +1908,31 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AppHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppHeader */ "./resources/js/components/AppHeader.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _AppHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppHeader */ "./resources/js/components/AppHeader.vue");
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    AppHeader: _AppHeader__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AppHeader: _AppHeader__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      posts: []
+    };
+  },
+  methods: {
+    fetchPosts: function fetchPosts() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://127.0.0.1:8000/api/posts').then(function (res) {
+        _this.posts = res.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.fetchPosts();
   }
 });
 
@@ -1948,7 +1968,11 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("AppHeader");
+  return _c("div", [_c("AppHeader"), _vm._v(" "), _c("ul", _vm._l(_vm.posts, function (post) {
+    return _c("li", {
+      key: post.id
+    }, [_vm._v(_vm._s(post.title))]);
+  }), 0)], 1);
 };
 
 var staticRenderFns = [];
