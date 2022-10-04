@@ -2,7 +2,7 @@
     <div>   
         <AppHeader />
         <div class="container">
-            <PostsList :posts="posts"/>
+            <PostsList />
         </div>
     </div> 
 </template>

@@ -1,15 +1,16 @@
 <template>
     <ul>
-        <li v-for="post in posts" :key="post.id">{{post.title}}</li>
+        <PostCard :posts="posts"/>
     </ul>
 
 </template>
 
 <script>
+import PostCard from './PostCard.vue';
 export default {
     name: 'PostList',
-    props: {
-        Posts: Array
+    components: {
+        PostCard
     },
     data(){
             return{
