@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Post;
-use App\Models\Category;
-use App\Models\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,8 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::all();
-        return response()->json($post);
+        $posts = Post::where('user_id', 1)->with(['category', 'tags'])->get();
+        return response()->json($posts);
     }
 
     /**

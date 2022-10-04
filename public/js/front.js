@@ -2109,7 +2109,24 @@ var render = function render() {
       staticClass: "card-title"
     }, [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v(_vm._s(post.content))])])]);
+    }, [_vm._v(_vm._s(post.content))])]), _vm._v(" "), _c("div", {
+      staticClass: "d-flex justify-content-between card-footer"
+    }, [post.category ? _c("div", [_c("span", {
+      staticClass: "badge badge-pill",
+      "class": "badge-".concat(post.category.color),
+      staticStyle: {
+        width: "4rem"
+      }
+    }, [_vm._v(_vm._s(post.category.label))])]) : _c("div", [_c("span", [_vm._v("No category found")])]), _vm._v(" "), post.tags ? _c("div", _vm._l(post.tags, function (tag) {
+      return _c("span", {
+        key: tag.id,
+        staticClass: "badge ml-1",
+        "class": "badge-".concat(tag.color_tag),
+        staticStyle: {
+          width: "4rem"
+        }
+      }, [_vm._v(_vm._s(tag.label))]);
+    }), 0) : _c("div", [_c("span", [_vm._v("No tag found")])])])]);
   }), 0);
 };
 
