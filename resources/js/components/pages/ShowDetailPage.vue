@@ -4,7 +4,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h5 class="card-title">{{post.title}}</h5>
-                    <router-link class="btn btn-secondary">Go Back</router-link>
+                    <router-link class="btn btn-secondary" to="/" @click="$router.back()">Go Back</router-link>
                 </div>
                 <p class="card-text">{{post.content}}</p>
             </div>
