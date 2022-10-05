@@ -2009,7 +2009,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchPost: function fetchPost() {
       var _this = this;
 
-      axios.get("http://127.0.0.1:8000/api/posts/".concat(this.$route.params.id)).then(function (res) {
+      axios.get("http://127.0.0.1:8000/api/posts/".concat(this.$route.params.slug)).then(function (res) {
         _this.post = res.data;
       });
     }
@@ -2354,7 +2354,7 @@ var render = function render() {
         to: {
           name: "show-detail",
           params: {
-            id: post.id
+            slug: post.slug
           }
         }
       }
@@ -54469,7 +54469,7 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _components_pages_AboutUsPage__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: 'about-us'
   }, {
-    path: '/posts/:id',
+    path: '/posts/:slug',
     component: _components_pages_ShowDetailPage__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'show-detail'
   }, // ! Must be last
