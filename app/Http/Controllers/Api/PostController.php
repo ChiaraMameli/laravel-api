@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('user_id', 1)->with(['category', 'tags'])->get();
+        $posts = Post::where('is_published', 1)->with(['category', 'tags', 'user'])->get();
         return response()->json($posts);
     }
 
