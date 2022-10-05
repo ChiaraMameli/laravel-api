@@ -1,6 +1,7 @@
 <template>
-        <div>
-        <div class="card mb-3">
+    <div>
+        <AppLoader v-if="isLoading" />
+        <div v-else class="card mb-3">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h5 class="card-title">{{post.title}}</h5>
@@ -29,24 +30,33 @@
 </template>
 
 <script>
+import AppLoader from '../AppLoader.vue';
 export default {
     name: "ShowDetailPage",
     data() {
         return {
             post: null,
-        }
+            isLoading: true,
+        };
     },
     methods: {
         fetchPost() {
             axios.get(`http://127.0.0.1:8000/api/posts/${this.$route.params.slug}`)
                 .then(res => {
                 this.post = res.data;
+            })
+                .catch(err => {
+                console.error(err);
+            })
+                .then(() => {
+                this.isLoading = false;
             });
         }
     },
-    mounted(){
+    mounted() {
         this.fetchPost();
-    }
+    },
+    components: { AppLoader }
 }
 </script>
 
