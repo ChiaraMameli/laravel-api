@@ -20,6 +20,8 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->name('admin.')-
     
     Route::get('', 'HomeController@index')->name('admin.home');
 
+    Route::patch('posts/{post}/toggle', 'PostController@toggle')->name('posts.toggle');
+
     // Posts
     Route::resource('posts', 'PostController');
 

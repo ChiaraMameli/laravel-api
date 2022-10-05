@@ -14,6 +14,7 @@
         <th scope="col">#</th>
         <th scope="col">Title</th>
         <th scope="col">Author</th>
+        <th scope="col">Status</th>
         <th scope="col">Category</th>
         <th scope="col">Tags</th>
         <th scope="col">Content</th>
@@ -24,14 +25,22 @@
     <tbody>
         @forelse($posts as $post)
             <tr>
-                <th scope="row">{{$post->id}}</th>
+                <td>{{$post->id}}</td>
                 <td>{{$post->title}}</td>
                 
                 @if($post->user)
-                <th scope="row">{{$post->user->name}}</th>
+                <td>{{$post->user->name}}</td>
                 @else
                     <td>No author found</td>
                 @endif
+
+                <td>
+                    <form action="{{ route('admin.posts.toggle', $post) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button class="btn btn-outline"><i class="fa-solid fa-2x fa-toggle-{{$post->is_published? 'on text-success' : 'off text-danger'}}"></i></button>
+                    </form>
+                </td>
 
                 @if($post->category)
                     <td><span class="badge badge-pill badge-{{$post->category->color ?? 'info'}}" style="width: 4rem">{{$post->category->label}}</span></td>
@@ -63,7 +72,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="5">No posts found</td>
+                <td colspan="9">No posts found</td>
             </tr>
         @endforelse
     </tbody>

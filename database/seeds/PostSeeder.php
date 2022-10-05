@@ -33,6 +33,7 @@ class PostSeeder extends Seeder
             $new_post->user_id = Arr::random($users_id);
             $new_post->content = $faker->paragraphs(2, true);
             $new_post->image = $faker->imageUrl(400, 400);
+            $new_post->is_published = $faker->boolean();
 
             $new_post->save();
 
