@@ -19,8 +19,6 @@
                 <div v-else>
                     <span>No tag found</span>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -30,7 +28,7 @@
 export default {
     name: 'PostCard',
     props: {
-        posts: Object
+        posts: Array
     },
 
 }
