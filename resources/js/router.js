@@ -10,8 +10,8 @@ Vue.use(VueRouter);
 const routes = new VueRouter({
     mode: 'history',
     routes: [
-        {path: '/', component: HomePage},
-        {path: '/about-us', component: AboutUsPage},
+        {path: '/', component: HomePage, name: 'home'},
+        {path: '/about-us', component: AboutUsPage, name: 'about-us'},
 
 
         // ! Must be last
