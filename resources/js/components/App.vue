@@ -2,7 +2,9 @@
     <div>   
         <AppHeader />
         <main class="container">
-            <HomePage />
+            <router-view>
+                <HomePage />
+            </router-view>
         </main>
     </div> 
 </template>
