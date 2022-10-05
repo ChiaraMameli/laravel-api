@@ -1,20 +1,20 @@
 <template>
     <div>   
         <AppHeader />
-        <div class="container">
-            <PostsList />
-        </div>
+        <main class="container">
+            <HomePage />
+        </main>
     </div> 
 </template>
 
 <script>
     import axios from 'axios';
     import AppHeader from './AppHeader';
-    import PostsList from './posts/PostsList';
+    import HomePage from './pages/HomePage';
     export default{
         components: {
             AppHeader,
-            PostsList
+            HomePage
         },
     }
 </script>

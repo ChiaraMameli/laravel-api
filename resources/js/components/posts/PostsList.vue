@@ -1,8 +1,5 @@
 <template>
-    <ul>
-        <PostCard :posts="posts"/>
-    </ul>
-
+    <PostCard :posts="posts"/>
 </template>
 
 <script>
