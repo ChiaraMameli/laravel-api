@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <div class="card mb-3" v-for="post in posts" :key="post.id">
+        <div>
+        <div class="card mb-3">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h5 class="card-title">{{post.title}}</h5>
-                    <router-link class="btn btn-primary" :to="{name: 'show-detail', params:{id: post.id}}">Show</router-link>
+                    <router-link class="btn btn-secondary">Go Back</router-link>
                 </div>
                 <p class="card-text">{{post.content}}</p>
             </div>
@@ -25,15 +25,28 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
 export default {
-    name: 'PostCard',
-    props: {
-        posts: Array
+    name: "ShowDetailPage",
+    data() {
+        return {
+            post: null,
+        }
     },
-
+    methods: {
+        fetchPost() {
+            axios.get(`http://127.0.0.1:8000/api/posts/${this.$route.params.id}`)
+                .then(res => {
+                this.post = res.data;
+            });
+        }
+    },
+    mounted(){
+        this.fetchPost();
+    }
 }
 </script>
 

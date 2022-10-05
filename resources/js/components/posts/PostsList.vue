@@ -14,17 +14,17 @@ export default {
                 posts: []
             }
         },
-        methods: {
-            fetchPosts(){
-                axios.get('http://127.0.0.1:8000/api/posts')
-                .then(res => {
-                    this.posts = res.data;
-                })
-            }
-        },
-        mounted(){
-            this.fetchPosts();
+    methods: {
+        fetchPosts(){
+            axios.get('http://127.0.0.1:8000/api/posts')
+            .then(res => {
+                this.posts = res.data;
+            })
         }
+    },
+    mounted(){
+        this.fetchPosts();
+    }
 
 }
 </script>
